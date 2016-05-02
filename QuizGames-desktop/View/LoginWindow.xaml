@@ -3,25 +3,29 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:QuizGames_desktop"
+        xmlns:local="clr-namespace:QuizGames_desktop.ViewModel"
         mc:Ignorable="d"
         Title="MainWindow" Height="350" Width="525">
+
+    <Window.DataContext>
+        <local:LoginWindowViewModel/>
+    </Window.DataContext>
     <Grid>
         <StackPanel Height="Auto" VerticalAlignment="Center" Width="Auto" HorizontalAlignment="Center">
             <StackPanel Orientation="Horizontal">
                 <Label Content="Username:" Margin="0,0,10,0" FontSize="18.667" />
-                <TextBox Width="200" FontSize="18.667" />
+                <TextBox Width="200" FontSize="18.667" Text="{Binding UsernameTB}" />
             </StackPanel>
             <StackPanel Orientation="Horizontal" Margin="0,7,0,0">
                 <Label Content="Password:" Margin="0,0,16,0" FontSize="18.667" />
-                <TextBox Width="200" FontSize="18.667" />
+                <TextBox Width="200" FontSize="18.667" Text="{Binding PasswordTB}" />
             </StackPanel>
             <StackPanel Orientation="Horizontal" Margin="0,7,0,0">
                 <Label Content="Remember me?" Margin="0,0,11,0" FontSize="18.667" />
                 <CheckBox VerticalContentAlignment="Center" IsChecked="True" FontSize="18.667" />
             </StackPanel>
             <StackPanel Orientation="Horizontal" Margin="0,15,0,0" HorizontalAlignment="Center">
-                <Button Content="Login" Margin="0,0,50,0" FontSize="18.667" Padding="5" />
+                <Button Content="Login" Margin="0,0,50,0" FontSize="18.667" Padding="5" Command="{Binding LoginCommand}"/>
                 <Button Content="Register" FontSize="18.667" Padding="5" />
             </StackPanel>
         </StackPanel>
